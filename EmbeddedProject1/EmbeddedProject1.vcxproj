@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{87F183BE-B744-4F0E-8E57-943CB3A4BD61}</ProjectGuid>
+    <BSP_ID>com.sysprogs.arm.stm32</BSP_ID>
+    <BSP_VERSION>2020.06</BSP_VERSION>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy;..\Drivers\CMSIS\Device\ST\STM32H7xx\Include;..\Drivers\CMSIS\Include;..\User\bsp\inc;..\User\bsp;..\User;..\RTX\inc;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;flash_layout;USE_HAL_DRIVER;STM32H743xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <CPPLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>..\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy;..\Drivers\CMSIS\Device\ST\STM32H7xx\Include;..\Drivers\CMSIS\Include;..\User\bsp\inc;..\User\bsp;..\User;..\RTX\inc;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG=1;RELEASE=1;flash_layout;USE_HAL_DRIVER;STM32H743xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <CPPLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_cortex.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_rcc_ex.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_flash.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_flash_ex.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_gpio.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_hsem.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_dma.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_dma_ex.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_mdma.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_pwr_ex.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_i2c_ex.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_exti.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim_ex.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c" />
+    <ClCompile Include="..\Src\system_stm32h7xx.c" />
+    <ClCompile Include="..\Src\main.c" />
+    <ClCompile Include="..\Src\gpio.c" />
+    <ClCompile Include="..\Src\usart.c" />
+    <ClCompile Include="..\Src\stm32h7xx_it.c" />
+    <ClCompile Include="..\Src\stm32h7xx_hal_msp.c" />
+    <ClCompile Include="..\User\main.c" />
+    <ClCompile Include="..\User\bsp\bsp.c" />
+    <None Include="stm32.props" />
+    <ClCompile Include="$(BSP_ROOT)\STM32H7xxxx\StartupFiles\startup_stm32h743xx.c" />
+    <ClInclude Include="..\User\includes.h" />
+    <ClInclude Include="..\User\bsp\bsp.h" />
+    <None Include="EmbeddedProject1-Debug.vgdbsettings" />
+    <None Include="EmbeddedProject1-Release.vgdbsettings" />
+    <None Include="stm32.xml" />
+    <ClCompile Include="..\RTX\Core\os_systick.c" />
+    <ClCompile Include="..\RTX\Core\rtx_delay.c" />
+    <ClCompile Include="..\RTX\Core\rtx_evflags.c" />
+    <ClCompile Include="..\RTX\Core\rtx_evr.c" />
+    <ClCompile Include="..\RTX\Core\rtx_kernel.c" />
+    <ClCompile Include="..\RTX\Core\rtx_lib.c" />
+    <ClCompile Include="..\RTX\Core\rtx_memory.c" />
+    <ClCompile Include="..\RTX\Core\rtx_mempool.c" />
+    <ClCompile Include="..\RTX\Core\rtx_msgqueue.c" />
+    <ClCompile Include="..\RTX\Core\rtx_mutex.c" />
+    <ClCompile Include="..\RTX\Core\rtx_semaphore.c" />
+    <ClCompile Include="..\RTX\Core\rtx_system.c" />
+    <ClCompile Include="..\RTX\Core\rtx_thread.c" />
+    <ClCompile Include="..\RTX\Core\rtx_timer.c" />
+    <ClCompile Include="..\MDK-ARM\RTE\CMSIS\RTX_Config.c" />
+    <ClInclude Include="..\MDK-ARM\RTE\CMSIS\RTX_Config.h" />
+  </ItemGroup>
+</Project>
