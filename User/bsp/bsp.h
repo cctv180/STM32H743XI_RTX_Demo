@@ -1,51 +1,51 @@
 /*
 *********************************************************************************************************
 *
-*	Ä£¿éÃû³Æ : BSPÄ£¿é(For STM32H7)
-*	ÎÄ¼şÃû³Æ : bsp.h
-*	°æ    ±¾ : V1.0
-*	Ëµ    Ã÷ : ÕâÊÇÓ²¼şµ×²ãÇı¶¯³ÌĞòµÄÖ÷ÎÄ¼ş¡£Ã¿¸öcÎÄ¼ş¿ÉÒÔ #include "bsp.h" À´°üº¬ËùÓĞµÄÍâÉèÇı¶¯Ä£¿é¡£
-*			   bsp = Borad surport packet °å¼¶Ö§³Ö°ü
-*	ĞŞ¸Ä¼ÇÂ¼ :
-*		°æ±¾ºÅ  ÈÕÆÚ         ×÷Õß       ËµÃ÷
-*		V1.0    2018-07-29  Eric2013   ÕıÊ½·¢²¼
+*	æ¨¡å—åç§° : BSPæ¨¡å—(For STM32H7)
+*	æ–‡ä»¶åç§° : bsp.h
+*	ç‰ˆ    æœ¬ : V1.0
+*	è¯´    æ˜ : è¿™æ˜¯ç¡¬ä»¶åº•å±‚é©±åŠ¨ç¨‹åºçš„ä¸»æ–‡ä»¶ã€‚æ¯ä¸ªcæ–‡ä»¶å¯ä»¥ #include "bsp.h" æ¥åŒ…å«æ‰€æœ‰çš„å¤–è®¾é©±åŠ¨æ¨¡å—ã€‚
+*			   bsp = Borad surport packet æ¿çº§æ”¯æŒåŒ…
+*	ä¿®æ”¹è®°å½• :
+*		ç‰ˆæœ¬å·  æ—¥æœŸ         ä½œè€…       è¯´æ˜
+*		V1.0    2018-07-29  Eric2013   æ­£å¼å‘å¸ƒ
 *
-*	Copyright (C), 2018-2030, °²¸»À³µç×Ó www.armfly.com
+*	Copyright (C), 2018-2030, å®‰å¯Œè±ç”µå­ www.armfly.com
 *
 *********************************************************************************************************
 */
 #ifndef _BSP_H_
 #define _BSP_H_
 
-/* ¹«¹²Í·ÎÄ¼ş */
+/* å…¬å…±å¤´æ–‡ä»¶ */
 #include "stm32h7xx_hal.h"
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
-/* ¶¨Òå BSP °æ±¾ºÅ */
+/* å®šä¹‰ BSP ç‰ˆæœ¬å· */
 #define STM32_BOARD         "STM32V7"
 #define STM32_BSP_VERSION   "V1.02"
 
-/* ¿ªÆô´òÓ¡Êı¾İ */
+/* å¼€å¯æ‰“å°æ•°æ® */
 #define BSP_INFO_EN
 
-/* ¿ªÆôµ÷ÊÔ´òÓ¡ */
+/* å¼€å¯è°ƒè¯•æ‰“å° */
 //#define DEBUG_MODE
 
-/* ¿ªÆôµ÷ÊÔÄ£Ê½  1¿ªÆô 0¹Ø±Õ  */
+/* å¼€å¯è°ƒè¯•æ¨¡å¼  1å¼€å¯ 0å…³é—­  */
 #define Enable_EventRecorder    0
 
-/* RTOS_RTX¿ªÆô  1¿ªÆô 0¹Ø±Õ */
+/* RTOS_RTXå¼€å¯  1å¼€å¯ 0å…³é—­ */
 #define  USE_RTX                1
 
-/* CPU¿ÕÏĞÊ±Ö´ĞĞµÄº¯Êı */
+/* CPUç©ºé—²æ—¶æ‰§è¡Œçš„å‡½æ•° */
 #define CPU_IDLE()          bsp_Idle()
 #define ERROR_HANDLER()		Error_Handler(__FILE__, __LINE__);
-/* ¿ª¹ØÈ«¾ÖÖĞ¶ÏµÄºê */
-#define ENABLE_INT()    __set_PRIMASK(0)	/* Ê¹ÄÜÈ«¾ÖÖĞ¶Ï */
-#define DISABLE_INT()   __set_PRIMASK(1)	/* ½ûÖ¹È«¾ÖÖĞ¶Ï */
+/* å¼€å…³å…¨å±€ä¸­æ–­çš„å® */
+#define ENABLE_INT()    __set_PRIMASK(0)	/* ä½¿èƒ½å…¨å±€ä¸­æ–­ */
+#define DISABLE_INT()   __set_PRIMASK(1)	/* ç¦æ­¢å…¨å±€ä¸­æ–­ */
 
 typedef enum
 {
@@ -59,7 +59,7 @@ typedef enum
 
 /*
 *********************************************************************************************************
- * ÒÔÏÂºê×Ô¶¯´¦ÀíÓëÌáÊ¾
+ * ä»¥ä¸‹å®è‡ªåŠ¨å¤„ç†ä¸æç¤º
 *********************************************************************************************************
  */
 #ifdef DEBUG_MODE
@@ -96,19 +96,19 @@ typedef enum
 #endif
 #endif
 
-/* ¼ì²éÊÇ·ñ¶¨ÒåÁË¿ª·¢°åĞÍºÅ */
+/* æ£€æŸ¥æ˜¯å¦å®šä¹‰äº†å¼€å‘æ¿å‹å· */
 #if !defined (STM32_BOARD)
     #error "Please define the board model : STM32_BOARD"
 #endif
 
-/* Õâ¸öºê½öÓÃÓÚµ÷ÊÔ½×¶ÎÅÅ´íprintf */
+/* è¿™ä¸ªå®ä»…ç”¨äºè°ƒè¯•é˜¶æ®µæ’é”™printf */
 #if Enable_EventRecorder == 1
     #include "EventRecorder.h"
 #endif
 
-/* printf ¶ş½øÖÆ¸ñÊ½Êä³ö ºê */
+/* printf äºŒè¿›åˆ¶æ ¼å¼è¾“å‡º å® */
 #define BYTE_TO_BINARY_PATTERN "0b%c%c%c%c%c%c%c%c"
-/* printf ¶ş½øÖÆ¸ñÊ½Êä³ö ºê */
+/* printf äºŒè¿›åˆ¶æ ¼å¼è¾“å‡º å® */
 #define BYTE_TO_BINARY(byte) \
         (byte & 0x80 ? '1' : '0'), \
         (byte & 0x40 ? '1' : '0'), \
@@ -131,48 +131,70 @@ typedef enum
     #define NULL 0
 #endif
 
-/* Í¨¹ıÈ¡Ïû×¢ÊÍ»òÕßÌí¼Ó×¢ÊÍµÄ·½Ê½¿ØÖÆÊÇ·ñ°üº¬µ×²ãÇı¶¯Ä£¿é */
+/* é€šè¿‡å–æ¶ˆæ³¨é‡Šæˆ–è€…æ·»åŠ æ³¨é‡Šçš„æ–¹å¼æ§åˆ¶æ˜¯å¦åŒ…å«åº•å±‚é©±åŠ¨æ¨¡å— */
+//#include "bsp_msg.h"
 //#include "bsp_user_lib.h"
-//#include "bsp_dwt.h"
-//#include "bsp_beep.h"
-//#include "bsp_key.h"
-//#include "bsp_adc.h"
-//#include "bsp_led.h"
-//#include "bsp_tim_pwm.h"
 //#include "bsp_timer.h"
-//#include "bsp_encoder.h"
-//#include "bsp_tm1638.h"
-//#include "bsp_uart_fifo.h"
-//#include "bsp_19264.h"
-//#include "bsp_595.h"
+#include "bsp_led.h"
+//#include "bsp_key.h"
+#include "bsp_dwt.h"
 
-//#include "bsp_i2c_gpio.h"
-//#include "bsp_i2c_rx8025t.h"
+//#include "bsp_cpu_rtc.h"
+//#include "bsp_cpu_adc.h"
+//#include "bsp_cpu_dac.h"
+#include "bsp_uart_fifo.h"
+//#include "bsp_uart_gps.h"
+//#include "bsp_uart_esp8266.h"
+//#include "bsp_uart_sim800.h"
 
 //#include "bsp_spi_bus.h"
+//#include "bsp_spi_ad9833.h"
+//#include "bsp_spi_ads1256.h"
+//#include "bsp_spi_dac8501.h"
+//#include "bsp_spi_dac8562.h"
+//#include "bsp_spi_flash.h"
+//#include "bsp_spi_tm7705.h"
+//#include "bsp_spi_vs1053b.h"
 
-//#include "sfud.h"
-//#include "sfud_cfg.h"
-//#include "easyflash.h"
-//#include "ef_cfg.h"
-//#include "fal.h"
-//#include "fal_cfg.h"
+//#include "bsp_fmc_sdram.h"
+//#include "bsp_fmc_nand_flash.h"
+//#include "bsp_fmc_ad7606.h"
+//#include "bsp_fmc_oled.h"
+#include "bsp_fmc_io.h"
 
-//#include "app.h"
-//#include "TextString.h"
-//#include "easyLIFO.h"
+//#include "bsp_i2c_gpio.h"
+//#include "bsp_i2c_bh1750.h"
+//#include "bsp_i2c_bmp085.h"
+//#include "bsp_i2c_eeprom_24xx.h"
+//#include "bsp_i2c_hmc5883l.h"
+//#include "bsp_i2c_mpu6050.h"
+//#include "bsp_i2c_si4730.h"
+//#include "bsp_i2c_wm8978.h"
 
-////#include "bsp_uart_esp8266.h"
+//#include "bsp_tft_h7.h"
+//#include "bsp_tft_429.h"
+//#include "bsp_tft_lcd.h"
+//#include "bsp_ts_touch.h"
+//#include "bsp_ts_ft5x06.h"
+//#include "bsp_ts_gt811.h"
+//#include "bsp_ts_gt911.h"
+//#include "bsp_ts_stmpe811.h"
 
-//#include <re.h>
-
-//#include "at_command_set.h"
-//#include "at_sim7600result.h"
+//#include "bsp_beep.h"
+//#include "bsp_tim_pwm.h"
+//#include "bsp_sdio_sd.h"
+//#include "bsp_dht11.h"
+//#include "bsp_ds18b20.h"
+//#include "bsp_ps2.h"
+//#include "bsp_ir_decode.h"
+//#include "bsp_camera.h"
+//#include "bsp_rs485_led.h"
+//#include "bsp_can.h"
 
 //#include "shell_port.h"
 //#include "shell_cfg.h"
 
-/* Ìá¹©¸øÆäËûCÎÄ¼şµ÷ÓÃµÄº¯Êı */
+/* æä¾›ç»™å…¶ä»–Cæ–‡ä»¶è°ƒç”¨çš„å‡½æ•° */
 void bsp_Init(void);
 void bsp_Idle(void);
 void System_Init(void);
@@ -182,4 +204,4 @@ void bsp_RunPer1ms(void);
 void bsp_RunPer10ms(void);
 
 #endif
-/***************************** °²¸»À³µç×Ó www.armfly.com (END OF FILE) *********************************/
+/***************************** å®‰å¯Œè±ç”µå­ www.armfly.com (END OF FILE) *********************************/

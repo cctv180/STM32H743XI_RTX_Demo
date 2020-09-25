@@ -16,14 +16,6 @@
 */
 #include "bsp.h"
 
-/*
-*********************************************************************************************************
-*	                                   函数声明
-*********************************************************************************************************
-*/
-static void SystemClock_Config(void);
-static void CPU_CACHE_Enable(void);
-static void MPU_Config(void);
 
 
 /*
@@ -89,11 +81,12 @@ void System_Init(void)
 */
 void bsp_Init(void)
 {
-	//bsp_InitDWT();      /* 初始化CM7内核的时钟周期计数器 */
-	//bsp_InitKey();    	/* 按键初始化，要放在滴答定时器之前，因为按钮检测是通过滴答定时器扫描 */
-	//bsp_InitUart();		/* 初始化串口 */
-	//bsp_InitExtIO();	/* 初始化FMC总线74HC574扩展IO. 必须在 bsp_InitLed()前执行 */	
-	//bsp_InitLed();    	/* 初始化LED */	
+	bsp_InitDWT();      /* 初始化DWT时钟周期计数器 */       
+//	bsp_InitKey();    	/* 按键初始化，要放在滴答定时器之前，因为按钮检测是通过滴答定时器扫描 */
+//	bsp_InitUart();		/* 初始化串口 */
+	bsp_InitExtIO();	/* 初始化FMC总线74HC574扩展IO. 必须在 bsp_InitLed()前执行 */	
+	bsp_InitLed();    	/* 初始化LED */	
+//	bsp_InitTimer();  	/* 初始化滴答定时器 */
 }
 
 /*
@@ -122,8 +115,8 @@ void bsp_Init(void)
 */
 static void SystemClock_Config(void)
 {
-	RCC_ClkInitTypeDef RCC_ClkInitStruct;
-	RCC_OscInitTypeDef RCC_OscInitStruct;
+	RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+	RCC_OscInitTypeDef RCC_OscInitStruct = {0};
 	HAL_StatusTypeDef ret = HAL_OK;
 
 	/* 锁住SCU(Supply configuration update) */
@@ -200,10 +193,13 @@ static void SystemClock_Config(void)
 	HAL_EnableCompensationCell();
 
    /* AXI SRAM的时钟是上电自动使能的，而D2域的SRAM1，SRAM2和SRAM3要单独使能 */	
-#if 0
+#if 1
 	__HAL_RCC_D2SRAM1_CLK_ENABLE();
 	__HAL_RCC_D2SRAM2_CLK_ENABLE();
 	__HAL_RCC_D2SRAM3_CLK_ENABLE();
+	
+	__HAL_RCC_BKPRAM_CLKAM_ENABLE();       
+	__HAL_RCC_D3SRAM1_CLKAM_ENABLE();
 #endif
 }
 
@@ -249,7 +245,9 @@ static void MPU_Config( void )
 	/* 禁止 MPU */
 	HAL_MPU_Disable();
 
-	/* 配置AXI SRAM的MPU属性为Write back, Read allocate，Write allocate */
+    /* 最高性能，读Cache和写Cache都开启 */	
+#if 1
+   	/* 配置AXI SRAM的MPU属性为Write back, Read allocate，Write allocate */
 	MPU_InitStruct.Enable           = MPU_REGION_ENABLE;
 	MPU_InitStruct.BaseAddress      = 0x24000000;
 	MPU_InitStruct.Size             = MPU_REGION_SIZE_512KB;
@@ -263,6 +261,24 @@ static void MPU_Config( void )
 	MPU_InitStruct.DisableExec      = MPU_INSTRUCTION_ACCESS_ENABLE;
 
 	HAL_MPU_ConfigRegion(&MPU_InitStruct);
+
+    /* 最低性能，读Cache和写Cache都关闭 */
+#else
+	/* 配置AXI SRAM的MPU属性为NORMAL, NO Read allocate，NO Write allocate */
+	MPU_InitStruct.Enable           = MPU_REGION_ENABLE;
+	MPU_InitStruct.BaseAddress      = 0x24000000;
+	MPU_InitStruct.Size             = MPU_REGION_SIZE_512KB;
+	MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
+	MPU_InitStruct.IsBufferable     = MPU_ACCESS_NOT_BUFFERABLE;
+	MPU_InitStruct.IsCacheable      = MPU_ACCESS_NOT_CACHEABLE;
+	MPU_InitStruct.IsShareable      = MPU_ACCESS_NOT_SHAREABLE;
+	MPU_InitStruct.Number           = MPU_REGION_NUMBER0;
+	MPU_InitStruct.TypeExtField     = MPU_TEX_LEVEL1;
+	MPU_InitStruct.SubRegionDisable = 0x00;
+	MPU_InitStruct.DisableExec      = MPU_INSTRUCTION_ACCESS_ENABLE;
+
+	HAL_MPU_ConfigRegion(&MPU_InitStruct);
+#endif
 	
 	
 	/* 配置FMC扩展IO的MPU属性为Device或者Strongly Ordered */
@@ -271,7 +287,7 @@ static void MPU_Config( void )
 	MPU_InitStruct.Size             = ARM_MPU_REGION_SIZE_64KB;	
 	MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
 	MPU_InitStruct.IsBufferable     = MPU_ACCESS_BUFFERABLE;
-	MPU_InitStruct.IsCacheable      = MPU_ACCESS_NOT_CACHEABLE;	/* 不能用MPU_ACCESS_CACHEABLE，会出现2次CS、WE信号 */
+	MPU_InitStruct.IsCacheable      = MPU_ACCESS_NOT_CACHEABLE;	/* 不能用MPU_ACCESS_CACHEABLE;会出现2次CS、WE信号 */
 	MPU_InitStruct.IsShareable      = MPU_ACCESS_NOT_SHAREABLE;
 	MPU_InitStruct.Number           = MPU_REGION_NUMBER1;
 	MPU_InitStruct.TypeExtField     = MPU_TEX_LEVEL0;
@@ -326,7 +342,7 @@ void bsp_RunPer10ms(void)
 */
 void bsp_RunPer1ms(void)
 {
-	
+
 }
 
 /*

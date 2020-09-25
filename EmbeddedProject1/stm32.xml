@@ -48,7 +48,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\MDK-ARM\project.uvprojx</RelativePath>
-        <Timestamp>132450931838453571</Timestamp>
+        <Timestamp>132455164905791146</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -119,6 +119,12 @@
                 <VirtualFileSnapshot>
                   <RelativePath>..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c</RelativePath>
                 </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_sram.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_fmc.c</RelativePath>
+                </VirtualFileSnapshot>
               </Files>
             </VirtualDirectorySnapshot>
             <VirtualDirectorySnapshot>
@@ -181,6 +187,18 @@
             </VirtualFileSnapshot>
             <VirtualFileSnapshot>
               <RelativePath>..\User\bsp\bsp.h</RelativePath>
+            </VirtualFileSnapshot>
+            <VirtualFileSnapshot>
+              <RelativePath>..\User\bsp\src\bsp_uart_fifo.c</RelativePath>
+            </VirtualFileSnapshot>
+            <VirtualFileSnapshot>
+              <RelativePath>..\User\bsp\src\bsp_led.c</RelativePath>
+            </VirtualFileSnapshot>
+            <VirtualFileSnapshot>
+              <RelativePath>..\User\bsp\src\bsp_fmc_io.c</RelativePath>
+            </VirtualFileSnapshot>
+            <VirtualFileSnapshot>
+              <RelativePath>..\User\bsp\src\bsp_dwt.c</RelativePath>
             </VirtualFileSnapshot>
           </Files>
         </VirtualDirectorySnapshot>
@@ -264,15 +282,18 @@
         <IsStaticLibrary>false</IsStaticLibrary>
         <Settings>
           <IncludeDirectories>
-            <string>E:\Stm32Project\STM32H743XI_Demo\Inc</string>
-            <string>E:\Stm32Project\STM32H743XI_Demo\Drivers\STM32H7xx_HAL_Driver\Inc</string>
-            <string>E:\Stm32Project\STM32H743XI_Demo\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy</string>
-            <string>E:\Stm32Project\STM32H743XI_Demo\Drivers\CMSIS\Device\ST\STM32H7xx\Include</string>
-            <string>E:\Stm32Project\STM32H743XI_Demo\Drivers\CMSIS\Include</string>
-            <string>E:\Stm32Project\STM32H743XI_Demo\User\bsp\inc</string>
-            <string>E:\Stm32Project\STM32H743XI_Demo\User\bsp\</string>
-            <string>E:\Stm32Project\STM32H743XI_Demo\User\</string>
-            <string>E:\Stm32Project\STM32H743XI_Demo\RTX\inc</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Inc</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Drivers\STM32H7xx_HAL_Driver\Inc</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Drivers\CMSIS\Device\ST\STM32H7xx\Include</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Drivers\CMSIS\Include</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp\inc</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp\</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\RTX\inc</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp\inc</string>
           </IncludeDirectories>
           <PreprocessorMacros>
             <string>$$com.sysprogs.bspoptions.primary_memory$$_layout</string>

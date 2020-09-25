@@ -165,9 +165,6 @@
     <ClCompile Include="..\Src\system_stm32h7xx.c">
       <Filter>Source files\Drivers\CMSIS</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\main.c">
-      <Filter>Source files\Application\User</Filter>
-    </ClCompile>
     <ClCompile Include="..\Src\gpio.c">
       <Filter>Source files\Application\User</Filter>
     </ClCompile>
@@ -255,5 +252,23 @@
     <ClInclude Include="..\MDK-ARM\RTE\CMSIS\RTX_Config.h">
       <Filter>Header files\RTX\Config</Filter>
     </ClInclude>
+    <ClCompile Include="..\User\bsp\src\bsp_uart_fifo.c">
+      <Filter>Source files\BSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\User\bsp\src\bsp_led.c">
+      <Filter>Source files\BSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\User\bsp\src\bsp_fmc_io.c">
+      <Filter>Source files\BSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\User\bsp\src\bsp_dwt.c">
+      <Filter>Source files\BSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_sram.c">
+      <Filter>Source files\Drivers\STM32H7xx_HAL_Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_fmc.c">
+      <Filter>Source files\Drivers\STM32H7xx_HAL_Driver</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

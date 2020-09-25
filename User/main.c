@@ -4,15 +4,15 @@
 *	模块名称 : 主程序模块
 *	文件名称 : main.c
 *	版    本 : V1.0
-*	说    明 : 创建RTX5工程模板。
+*	说    明 : RTX5调试组件的使用。
 *              实验目的：
-*                1. 创建RTX5工程模板。
+*                1. RTX5调试组件的使用。
 *              实验内容：
 *                1. K1按键按下，串口打印。
 *                2. 各个任务实现的功能如下：
 *                   AppTaskUserIF任务   : 按键消息处理。
 *                   AppTaskLED任务      : LED闪烁。
-*                   AppTaskMsgPro任务   : 消息处理。
+*                   AppTaskMsgPro任务   : 消息处理，这里用作验证Event Recoder。。
 *                   AppTaskStart任务    : 启动任务，也是最高优先级任务，这里实现按键扫描。
 *                   osRtxTimerThread任务: 定时器任务，暂未使用。
 *              注意事项：
@@ -23,16 +23,17 @@
 *
 *	修改记录 :
 *		版本号   日期         作者        说明
-*		V1.0    2019-04-10   Eric2013     1. CMSIS软包版本 V5.5.1
-*                                         2. HAL库版本 V1.3.0
-*                                         3. RTX5版本5.5.0
-*                                         4. Event Recorder版本1.4.0
+*		V1.0    2020-09-20   Eric2013     1. CMSIS软包版本 V5.7.0
+*                                         2. HAL库版本 V1.9.0
+*                                         3. RTX5版本5.5.2
 *
-*	Copyright (C), 2019-2030, 安富莱电子 www.armfly.com
+*	Copyright (C), 2020-2030, 安富莱电子 www.armfly.com
 *
 *********************************************************************************************************
 */	
 #include "includes.h"
+
+
 
 /*
 **********************************************************************************************************
@@ -44,6 +45,7 @@ void AppTaskUserIF(void *argument);
 void AppTaskLED(void *argument);
 void AppTaskMsgPro(void *argument);
 void AppTaskStart(void *argument);
+
 
 /*
 **********************************************************************************************************
@@ -96,6 +98,7 @@ osThreadId_t ThreadIdTaskUserIF = NULL;
 osThreadId_t ThreadIdTaskMsgPro = NULL;
 osThreadId_t ThreadIdTaskLED = NULL;
 osThreadId_t ThreadIdStart = NULL;
+
 
 /*
 *********************************************************************************************************
@@ -180,7 +183,7 @@ void AppTaskLED(void *argument)
 	
     while(1)
     {
-//		bsp_LedToggle(2);
+		bsp_LedToggle(2);
 		/* 相对延迟 */
 		tick += usFrequency;                          
 		osDelayUntil(tick);
@@ -200,10 +203,10 @@ void AppTaskMsgPro(void *argument)
 {
 	while(1)
 	{
-		/* 验证Event Recoder的时间统计功能 */
-//		EventStartA(1);
+        /* 验证Event Recoder的时间统计功能 */
+		//EventStartA(1);
 		osDelay(10);
-//		EventStopA(1);
+		//EventStopA(1);
 	}	
 }
 
@@ -233,8 +236,8 @@ void AppTaskStart(void *argument)
 	
     while(1)
     {
-		/* 需要周期性处理的程序，对应裸机工程调用的 */
-		bsp_ProPer1ms();
+		/* 需要周期性处理的程序，对应裸机工程调用的SysTick_ISR */
+		//bsp_ProPer1ms();
 		
 		/* 相对延迟 */
 		tick += usFrequency;                          
