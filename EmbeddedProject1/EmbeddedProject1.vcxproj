@@ -94,6 +94,7 @@
     <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim_ex.c" />
     <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart.c" />
     <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c" />
+    <ClCompile Include="..\Src\main.c" />
     <ClCompile Include="..\Src\system_stm32h7xx.c" />
     <ClCompile Include="..\Src\gpio.c" />
     <ClCompile Include="..\Src\usart.c" />

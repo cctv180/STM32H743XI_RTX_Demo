@@ -48,7 +48,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\MDK-ARM\project.uvprojx</RelativePath>
-        <Timestamp>132455164905791146</Timestamp>
+        <Timestamp>132456137955106951</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>

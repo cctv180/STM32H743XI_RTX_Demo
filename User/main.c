@@ -33,7 +33,7 @@
 */	
 #include "includes.h"
 
-
+#define DEBUG_RTX_INFO        //输出内核信息
 
 /*
 **********************************************************************************************************
@@ -46,6 +46,9 @@ void AppTaskLED(void *argument);
 void AppTaskMsgPro(void *argument);
 void AppTaskStart(void *argument);
 
+#ifdef DEBUG_RTX_INFO
+static void info(void);                         /* 输出系统信息 */
+#endif
 
 /*
 **********************************************************************************************************
@@ -98,7 +101,6 @@ osThreadId_t ThreadIdTaskUserIF = NULL;
 osThreadId_t ThreadIdTaskMsgPro = NULL;
 osThreadId_t ThreadIdTaskLED = NULL;
 osThreadId_t ThreadIdStart = NULL;
-
 
 /*
 *********************************************************************************************************
@@ -159,7 +161,7 @@ void AppTaskUserIF(void *argument)
 //					break;
 //			}
 //		}
-		
+
 		osDelay(20);
 	}
 }
@@ -231,6 +233,10 @@ void AppTaskStart(void *argument)
 	/* 创建任务 */
 	AppTaskCreate();
 
+	#ifdef DEBUG_RTX_INFO
+	info();
+	#endif
+	
 	/* 获取当前时间 */
 	tick = osKernelGetTickCount(); 
 	
@@ -260,4 +266,28 @@ static void AppTaskCreate (void)
 	ThreadIdTaskUserIF = osThreadNew(AppTaskUserIF, NULL, &ThreadUserIF_Attr);  
 }
 
+#ifdef DEBUG_RTX_INFO
+/*
+*********************************************************************************************************
+*   函 数 名: info
+*   功能说明: 输出系统信息
+*   形    参: 无
+*   返 回 值: 无
+*********************************************************************************************************
+*/
+static void info(void)
+{
+	char infobuf[100];
+	osVersion_t osv;
+	osStatus_t status;
+
+	status = osKernelGetInfo(&osv, infobuf, sizeof(infobuf));
+	if (status == osOK)
+	{
+		BSP_INFO("Kernel Information: %s", infobuf);
+		BSP_INFO("Kernel Version    : %d", osv.kernel);
+		BSP_INFO("Kernel API Version: %d", osv.api);
+	}
+}
+#endif
 /***************************** 安富莱电子 www.armfly.com (END OF FILE) *********************************/

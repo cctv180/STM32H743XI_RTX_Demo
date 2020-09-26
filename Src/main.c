@@ -18,9 +18,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
-#include "usart.h"
-#include "gpio.h"
+#include "bsp.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -64,46 +62,20 @@ void SystemClock_Config(void);
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
+    /* HAL库，MPU，Cache，时钟等系统初始化 */
+    System_Init();
+    /* 内核开启前关闭HAL的时间基准 */
+    HAL_SuspendTick();
 
-  /* USER CODE END 1 */
-
-  /* Enable I-Cache---------------------------------------------------------*/
-  SCB_EnableICache();
-
-  /* Enable D-Cache---------------------------------------------------------*/
-  SCB_EnableDCache();
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
-
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
-
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_USART1_UART_Init();
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
+    /* 初始化外设 */
+    HAL_ResumeTick();
+    bsp_Init();
+    BSP_INFO("start ok");
   while (1)
   {
     /* USER CODE END WHILE */
     HAL_Delay(1000);
-    //HAL_GPIO_TogglePin(BEEP_GPIO_Port, BEEP_Pin);
+	bsp_LedToggle(2);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -113,6 +85,7 @@ int main(void)
   * @brief System Clock Configuration
   * @retval None
   */
+#if 0
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -170,22 +143,11 @@ void SystemClock_Config(void)
     Error_Handler();
   }
 }
+#endif
 
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
-
-/**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
-void Error_Handler(void)
-{
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-
-  /* USER CODE END Error_Handler_Debug */
-}
 
 #ifdef  USE_FULL_ASSERT
 /**
