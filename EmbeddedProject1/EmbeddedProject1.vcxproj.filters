@@ -273,5 +273,8 @@
     <ClCompile Include="..\Src\main.c">
       <Filter>Source files\Application\User</Filter>
     </ClCompile>
+    <ClCompile Include="..\User\bsp\src\bsp_kfifo.c">
+      <Filter>Source files\BSP</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

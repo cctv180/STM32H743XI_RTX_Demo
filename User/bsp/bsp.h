@@ -32,7 +32,7 @@
 #define BSP_INFO_EN
 
 /* 开启调试打印 */
-//#define DEBUG_MODE
+#define DEBUG_MODE
 
 /* 开启调试模式  1开启 0关闭  */
 #define Enable_EventRecorder    0
@@ -91,9 +91,14 @@ typedef enum
 #endif
 
 #if USE_RTX == 1
+
 #ifndef RTE_CMSIS_RTOS2
-#define RTE_CMSIS_RTOS2
+ /*  ARM::CMSIS:RTOS2:Keil RTX5:Source:5.5.2 */
+#define RTE_CMSIS_RTOS2                 /* CMSIS-RTOS2 */
+#define RTE_CMSIS_RTOS2_RTX5            /* CMSIS-RTOS2 Keil RTX5 */
+#define RTE_CMSIS_RTOS2_RTX5_SOURCE     /* CMSIS-RTOS2 Keil RTX5 Source */
 #endif
+
 #endif
 
 /* 检查是否定义了开发板型号 */
@@ -132,6 +137,7 @@ typedef enum
 #endif
 
 /* 通过取消注释或者添加注释的方式控制是否包含底层驱动模块 */
+#include "bsp_kfifo.h"
 //#include "bsp_msg.h"
 //#include "bsp_user_lib.h"
 //#include "bsp_timer.h"

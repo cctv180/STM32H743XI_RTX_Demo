@@ -43,7 +43,7 @@
 #define	UART3_FIFO_EN	1
 #define	UART4_FIFO_EN	0
 #define	UART5_FIFO_EN	0
-#define	UART6_FIFO_EN	0
+#define	UART6_FIFO_EN	1
 #define	UART7_FIFO_EN	0
 #define	UART8_FIFO_EN	0
 
@@ -120,7 +120,7 @@ typedef enum
 /* 串口设备结构体 */
 typedef struct
 {
-	UART_HandleTypeDef  huart;  /* 主要用其中的init结构，读回串口参数 */
+    UART_HandleTypeDef  huart;  /* 主要用其中的init结构，读回串口参数 */
 //    USART_TypeDef *uart;      /* STM32内部串口设备指针 */
     uint8_t *pTxBuf;			/* 发送缓冲区 */
     uint8_t *pRxBuf;			/* 接收缓冲区 */

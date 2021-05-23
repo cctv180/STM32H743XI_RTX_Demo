@@ -34,7 +34,7 @@ EWARM/settings/*.wsdt
 EWARM/settings/*.cspy.bat
 EWARM/settings/*.dbgdt
 EWARM/settings/*.ps1
-EWARM/SD_J_B_stm32f4.dep
+EWARM/stm32f4.dep
 EWARM/*.sln
 EWARM/*.vcxproj
 EWARM/*.filters

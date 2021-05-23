@@ -7,7 +7,7 @@
     <Revision>2</Revision>
   </ToolchainVersion>
   <BspID>com.sysprogs.arm.stm32</BspID>
-  <BspVersion>2020.06</BspVersion>
+  <BspVersion>2021.02</BspVersion>
   <McuID>STM32H743XI</McuID>
   <MCUDefinitionFile>STM32H7xxxx/DeviceDefinitions/stm32h743xx.xml</MCUDefinitionFile>
   <MCUProperties>
@@ -48,7 +48,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\MDK-ARM\project.uvprojx</RelativePath>
-        <Timestamp>132456137955106951</Timestamp>
+        <Timestamp>132661396726571135</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -200,6 +200,9 @@
             <VirtualFileSnapshot>
               <RelativePath>..\User\bsp\src\bsp_dwt.c</RelativePath>
             </VirtualFileSnapshot>
+            <VirtualFileSnapshot>
+              <RelativePath>..\User\bsp\src\bsp_kfifo.c</RelativePath>
+            </VirtualFileSnapshot>
           </Files>
         </VirtualDirectorySnapshot>
         <VirtualDirectorySnapshot>
@@ -260,10 +263,10 @@
               <Name>Config</Name>
               <Files>
                 <VirtualFileSnapshot>
-                  <RelativePath>..\MDK-ARM\RTE\CMSIS\RTX_Config.c</RelativePath>
+                  <RelativePath>..\RTX\Config\RTX_Config.c</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
-                  <RelativePath>..\MDK-ARM\RTE\CMSIS\RTX_Config.h</RelativePath>
+                  <RelativePath>..\RTX\Config\RTX_Config.h</RelativePath>
                 </VirtualFileSnapshot>
               </Files>
             </VirtualDirectorySnapshot>
@@ -291,6 +294,7 @@
             <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp\</string>
             <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\</string>
             <string>E:\Stm32Project\STM32H743XI_RTX_Demo\RTX\inc</string>
+            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\RTX\Config</string>
             <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User</string>
             <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp</string>
             <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp\inc</string>

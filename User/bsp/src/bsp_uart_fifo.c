@@ -1416,7 +1416,10 @@ static void UartIRQ(UART_T* _pUart)
     uint32_t cr3its = READ_REG(_pUart->huart.Instance->CR3);
 
     /* 处理接收中断  */
-    if ((isrflags & USART_ISR_RXNE_RXFNE) != RESET)
+    /* UART in mode Receiver ---------------------------------------------------*/
+    if (((isrflags & USART_ISR_RXNE_RXFNE) != 0U)
+        && (((cr1its & USART_CR1_RXNEIE_RXFNEIE) != 0U)
+            || ((cr3its & USART_CR3_RXFTIE) != 0U)))
     {
         /* 从串口接收数据寄存器读取数据存放到接收FIFO */
         uint8_t ch;
@@ -1444,7 +1447,10 @@ static void UartIRQ(UART_T* _pUart)
     }
 
     /* 处理发送缓冲区空中断 */
-    if (((isrflags & USART_ISR_TXE_TXFNF) != RESET) && (cr1its & USART_CR1_TXEIE) != RESET)
+    /* UART in mode Transmitter ------------------------------------------------*/
+    if (((isrflags & USART_ISR_TXE_TXFNF) != 0U)
+        && (((cr1its & USART_CR1_TXEIE_TXFNFIE) != 0U)
+            || ((cr3its & USART_CR3_TXFTIE) != 0U)))
     {
         //if (_pUart->usTxRead == _pUart->usTxWrite)
         if (_pUart->usTxCount == 0)
@@ -1472,7 +1478,8 @@ static void UartIRQ(UART_T* _pUart)
         }
     }
     /* 数据bit位全部发送完毕的中断 */
-    if (((isrflags & USART_ISR_TC) != RESET) && ((cr1its & USART_CR1_TCIE) != RESET))
+    /* UART in mode Transmitter (transmission end) -----------------------------*/
+    if (((isrflags & USART_ISR_TC) != 0U) && ((cr1its & USART_CR1_TCIE) != 0U))
     {
         //if (_pUart->usTxRead == _pUart->usTxWrite)
         if (_pUart->usTxCount == 0)
@@ -1517,7 +1524,7 @@ static void UartIRQ(UART_T* _pUart)
     SET_BIT(_pUart->huart.Instance->ICR, UART_CLEAR_WUF);
     SET_BIT(_pUart->huart.Instance->ICR, UART_CLEAR_TXFECF);
 
-    //      *            @arg UART_CLEAR_PEF: Parity Error Clear Flag
+    //  *            @arg UART_CLEAR_PEF: Parity Error Clear Flag
     //  *            @arg UART_CLEAR_FEF: Framing Error Clear Flag
     //  *            @arg UART_CLEAR_NEF: Noise detected Clear Flag
     //  *            @arg UART_CLEAR_OREF: OverRun Error Clear Flag
@@ -1612,13 +1619,13 @@ int fputc(int ch, FILE *f)
 #else	/* 采用阻塞方式发送每个字符,等待数据发送完毕 */
     /* 写一个字节到USART1 */
     USART1->TDR = ch;
-    
+
     /* 等待发送结束 */
     while((USART1->ISR & USART_ISR_TC) == 0)
     {
-	    
+
     }
-    
+
     return ch;
 #endif
 }
