@@ -48,7 +48,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\MDK-ARM\project.uvprojx</RelativePath>
-        <Timestamp>132661396726571135</Timestamp>
+        <Timestamp>132679399549417498</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -285,19 +285,19 @@
         <IsStaticLibrary>false</IsStaticLibrary>
         <Settings>
           <IncludeDirectories>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Inc</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Drivers\STM32H7xx_HAL_Driver\Inc</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Drivers\CMSIS\Device\ST\STM32H7xx\Include</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\Drivers\CMSIS\Include</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp\inc</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp\</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\RTX\inc</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\RTX\Config</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp</string>
-            <string>E:\Stm32Project\STM32H743XI_RTX_Demo\User\bsp\inc</string>
+            <string>..\Inc</string>
+            <string>..\Drivers\STM32H7xx_HAL_Driver\Inc</string>
+            <string>..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy</string>
+            <string>..\Drivers\CMSIS\Device\ST\STM32H7xx\Include</string>
+            <string>..\Drivers\CMSIS\Include</string>
+            <string>..\User\bsp\inc</string>
+            <string>..\User\bsp</string>
+            <string>..\User</string>
+            <string>..\RTX\inc</string>
+            <string>..\RTX\Config</string>
+            <string>..\User</string>
+            <string>..\User\bsp</string>
+            <string>..\User\bsp\inc</string>
           </IncludeDirectories>
           <PreprocessorMacros>
             <string>$$com.sysprogs.bspoptions.primary_memory$$_layout</string>
