@@ -12,16 +12,16 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{87F183BE-B744-4F0E-8E57-943CB3A4BD61}</ProjectGuid>
+    <ProjectGuid>{742C67BF-356B-4AB4-991F-0E38471CB993}</ProjectGuid>
     <BSP_ID>com.sysprogs.arm.stm32</BSP_ID>
     <BSP_VERSION>2021.02</BSP_VERSION>
+    <InPlaceBSPSubdir />
+    <RelativeBSPPath />
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
-    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
-    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -32,16 +32,18 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
+    <ToolchainVersion>10.3.1/10.2.90/r1</ToolchainVersion>
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
-    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
+    <ToolchainVersion>10.3.1/10.2.90/r1</ToolchainVersion>
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy;..\Drivers\CMSIS\Device\ST\STM32H7xx\Include;..\Drivers\CMSIS\Include;..\User\bsp\inc;..\User\bsp;..\User;..\RTX\inc;..\RTX\Config;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG=1;flash_layout;USE_HAL_DRIVER;STM32H743xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy;..\Drivers\CMSIS\Device\ST\STM32H7xx\Include;..\Drivers\CMSIS\Include;..\User\bsp\inc;..\User\bsp;..\User;..\RTX\Config;..\RTX\CMSIS_5\CMSIS\Core\Include;..\RTX\CMSIS_5\CMSIS\RTOS2\Include;..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>flash_layout;USE_HAL_DRIVER;STM32H743xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard />
@@ -55,8 +57,8 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy;..\Drivers\CMSIS\Device\ST\STM32H7xx\Include;..\Drivers\CMSIS\Include;..\User\bsp\inc;..\User\bsp;..\User;..\RTX\inc;..\RTX\Config;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG=1;RELEASE=1;flash_layout;USE_HAL_DRIVER;STM32H743xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy;..\Drivers\CMSIS\Device\ST\STM32H7xx\Include;..\Drivers\CMSIS\Include;..\User\bsp\inc;..\User\bsp;..\User;..\RTX\Config;..\RTX\CMSIS_5\CMSIS\Core\Include;..\RTX\CMSIS_5\CMSIS\RTOS2\Include;..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>flash_layout;USE_HAL_DRIVER;STM32H743xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard />
@@ -94,43 +96,44 @@
     <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_tim_ex.c" />
     <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart.c" />
     <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_uart_ex.c" />
-    <ClCompile Include="..\Src\main.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_sram.c" />
+    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_fmc.c" />
     <ClCompile Include="..\Src\system_stm32h7xx.c" />
+    <ClCompile Include="..\Src\main.c" />
     <ClCompile Include="..\Src\gpio.c" />
     <ClCompile Include="..\Src\usart.c" />
     <ClCompile Include="..\Src\stm32h7xx_it.c" />
     <ClCompile Include="..\Src\stm32h7xx_hal_msp.c" />
     <ClCompile Include="..\User\main.c" />
     <ClCompile Include="..\User\bsp\bsp.c" />
-    <None Include="stm32.props" />
-    <ClCompile Include="$(BSP_ROOT)\STM32H7xxxx\StartupFiles\startup_stm32h743xx.c" />
-    <ClInclude Include="..\User\includes.h" />
-    <ClInclude Include="..\User\bsp\bsp.h" />
-    <None Include="EmbeddedProject1-Debug.vgdbsettings" />
-    <None Include="EmbeddedProject1-Release.vgdbsettings" />
-    <None Include="stm32.xml" />
-    <ClCompile Include="..\RTX\Core\os_systick.c" />
-    <ClCompile Include="..\RTX\Core\rtx_delay.c" />
-    <ClCompile Include="..\RTX\Core\rtx_evflags.c" />
-    <ClCompile Include="..\RTX\Core\rtx_evr.c" />
-    <ClCompile Include="..\RTX\Core\rtx_kernel.c" />
-    <ClCompile Include="..\RTX\Core\rtx_lib.c" />
-    <ClCompile Include="..\RTX\Core\rtx_memory.c" />
-    <ClCompile Include="..\RTX\Core\rtx_mempool.c" />
-    <ClCompile Include="..\RTX\Core\rtx_msgqueue.c" />
-    <ClCompile Include="..\RTX\Core\rtx_mutex.c" />
-    <ClCompile Include="..\RTX\Core\rtx_semaphore.c" />
-    <ClCompile Include="..\RTX\Core\rtx_system.c" />
-    <ClCompile Include="..\RTX\Core\rtx_thread.c" />
-    <ClCompile Include="..\RTX\Core\rtx_timer.c" />
-    <ClCompile Include="..\MDK-ARM\RTE\CMSIS\RTX_Config.c" />
-    <ClInclude Include="..\MDK-ARM\RTE\CMSIS\RTX_Config.h" />
     <ClCompile Include="..\User\bsp\src\bsp_uart_fifo.c" />
     <ClCompile Include="..\User\bsp\src\bsp_led.c" />
     <ClCompile Include="..\User\bsp\src\bsp_fmc_io.c" />
     <ClCompile Include="..\User\bsp\src\bsp_dwt.c" />
-    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_hal_sram.c" />
-    <ClCompile Include="..\Drivers\STM32H7xx_HAL_Driver\Src\stm32h7xx_ll_fmc.c" />
     <ClCompile Include="..\User\bsp\src\bsp_kfifo.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_delay.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_evflags.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_evr.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_kernel.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_lib.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_memory.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_mempool.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_msgqueue.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_mutex.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_semaphore.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_system.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_thread.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_timer.c" />
+    <ClCompile Include="..\RTX\CMSIS_5\CMSIS\RTOS2\Source\os_systick.c" />
+    <ClCompile Include="..\RTX\Config\RTX_Config.c" />
+    <None Include="stm32.props" />
+    <ClCompile Include="$(BSP_ROOT)\STM32H7xxxx\StartupFiles\startup_stm32h743xx.c" />
+    <ClInclude Include="..\User\includes.h" />
+    <ClInclude Include="..\User\bsp\bsp.h" />
+    <ClInclude Include="..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_lib.h" />
+    <ClInclude Include="..\RTX\Config\RTX_Config.h" />
+    <None Include="EmbeddedProject1-Debug.vgdbsettings" />
+    <None Include="EmbeddedProject1-Release.vgdbsettings" />
+    <None Include="stm32.xml" />
   </ItemGroup>
 </Project>

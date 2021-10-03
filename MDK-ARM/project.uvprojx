@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>2</Optim>
+            <Optim>6</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32H743xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy;..\Drivers\CMSIS\Device\ST\STM32H7xx\Include;..\Drivers\CMSIS\Include;..\User\bsp\inc;..\User\bsp\;..\User\;..\RTX\inc;..\RTX\Config;..\User;..\User\bsp;..\User\bsp\inc</IncludePath>
+              <IncludePath>..\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc;..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy;..\Drivers\CMSIS\Device\ST\STM32H7xx\Include;..\Drivers\CMSIS\Include;..\User\bsp\inc;..\User\bsp;..\User;..\User\bsp;..\User\bsp\inc;..\RTX\Config;..\RTX\CMSIS_5\CMSIS\Core\Include;..\RTX\CMSIS_5\CMSIS\RTOS2\Include;..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -757,74 +757,79 @@
           <GroupName>RTX/Core</GroupName>
           <Files>
             <File>
-              <FileName>os_systick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\RTX\Core\os_systick.c</FilePath>
-            </File>
-            <File>
               <FileName>rtx_delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_delay.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_delay.c</FilePath>
             </File>
             <File>
               <FileName>rtx_evflags.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_evflags.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_evflags.c</FilePath>
             </File>
             <File>
               <FileName>rtx_evr.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_evr.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_evr.c</FilePath>
             </File>
             <File>
               <FileName>rtx_kernel.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_kernel.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_kernel.c</FilePath>
             </File>
             <File>
               <FileName>rtx_lib.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_lib.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_lib.c</FilePath>
+            </File>
+            <File>
+              <FileName>rtx_lib.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_lib.h</FilePath>
             </File>
             <File>
               <FileName>rtx_memory.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_memory.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_memory.c</FilePath>
             </File>
             <File>
               <FileName>rtx_mempool.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_mempool.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_mempool.c</FilePath>
             </File>
             <File>
               <FileName>rtx_msgqueue.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_msgqueue.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_msgqueue.c</FilePath>
             </File>
             <File>
               <FileName>rtx_mutex.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_mutex.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_mutex.c</FilePath>
             </File>
             <File>
               <FileName>rtx_semaphore.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_semaphore.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_semaphore.c</FilePath>
             </File>
             <File>
               <FileName>rtx_system.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_system.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_system.c</FilePath>
             </File>
             <File>
               <FileName>rtx_thread.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_thread.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_thread.c</FilePath>
             </File>
             <File>
               <FileName>rtx_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RTX\Core\rtx_timer.c</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\rtx_timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\Source\os_systick.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -832,9 +837,9 @@
           <GroupName>RTX/Handlers</GroupName>
           <Files>
             <File>
-              <FileName>irq_cm4f.s</FileName>
+              <FileName>irq_armv7m.s</FileName>
               <FileType>2</FileType>
-              <FilePath>..\RTX\Handlers\Keil\irq_cm4f.s</FilePath>
+              <FilePath>..\RTX\CMSIS_5\CMSIS\RTOS2\RTX\Source\ARM\irq_armv7m.s</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,0 +1,4 @@
+[submodule "RTX/CMSIS_5"]
+	path = RTX/CMSIS_5
+	url = https://github.com/ARM-software/CMSIS_5
+	branch = master

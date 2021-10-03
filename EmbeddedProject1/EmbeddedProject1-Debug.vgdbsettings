@@ -7,8 +7,10 @@
       <PathStyle>MinGWUnixSlash</PathStyle>
       <LocalDirForAbsolutePaths>$(ToolchainDir)</LocalDirForAbsolutePaths>
     </CustomSourceDirectories>
+    <AutoProgramSPIFFSPartition>true</AutoProgramSPIFFSPartition>
     <MainSourceDirectory>$(ProjectDir)</MainSourceDirectory>
     <ExportAdvancedBuildVariables>false</ExportAdvancedBuildVariables>
+    <SkipImportedProjectChecks>false</SkipImportedProjectChecks>
     <EmbeddedProfileFile>stm32.xml</EmbeddedProfileFile>
     <MemoryListSource>DeviceDefinition</MemoryListSource>
   </Project>
@@ -22,6 +24,7 @@
     <ProjectFile>EmbeddedProject1.vcxproj</ProjectFile>
     <ParallelJobCount>0</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
+    <BuildAsRoot>false</BuildAsRoot>
   </Build>
   <CustomBuild>
     <PreSyncActions />
@@ -53,7 +56,6 @@
       <Enabled>false</Enabled>
     </CodeAnalyzerSettings>
   </CodeSense>
-  <BuildContextDirectory>VisualGDB\VisualGDBCache</BuildContextDirectory>
   <Debug xsi:type="com.visualgdb.debug.embedded">
     <AdditionalStartupCommands />
     <AdditionalGDBSettings>
@@ -88,20 +90,9 @@
       <EnableVerboseMode>true</EnableVerboseMode>
     </AdditionalGDBSettings>
     <DebugMethod>
-      <ID>jlink-jtag</ID>
-      <InterfaceID>com.sysprogs.debug.jlink.jlinksw</InterfaceID>
-      <InterfaceSerialNumber>000059402509</InterfaceSerialNumber>
-      <Configuration xsi:type="com.visualgdb.edp.segger.settings">
-        <CommandLine>-select USB -device $$SYS:MCU_ID$$ -speed auto -if SWD</CommandLine>
-        <ProgramMode>Enabled</ProgramMode>
-        <StartupCommands>
-          <string>target remote :$$SYS:GDB_PORT$$</string>
-          <string>mon reset</string>
-          <string>load</string>
-        </StartupCommands>
-        <UseUnreliableLiveMemoryEngine>false</UseUnreliableLiveMemoryEngine>
-        <ProgramFLASHUsingExternalTool>false</ProgramFLASHUsingExternalTool>
-        <PreferredGDBPort>0</PreferredGDBPort>
+      <ID>gdbsim</ID>
+      <Configuration>
+        <Entries />
       </Configuration>
     </DebugMethod>
     <AutoDetectRTOS>true</AutoDetectRTOS>
@@ -116,6 +107,7 @@
     <EndOfStackSymbol>_estack</EndOfStackSymbol>
     <TimestampProviderTicksPerSecond>0</TimestampProviderTicksPerSecond>
     <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
+    <UnusedStackFillPattern xsi:nil="true" />
     <CheckInterfaceDrivers>true</CheckInterfaceDrivers>
   </Debug>
 </VisualGDBProjectSettings2>
