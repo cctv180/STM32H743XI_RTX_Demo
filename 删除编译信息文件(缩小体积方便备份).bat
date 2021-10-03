@@ -10,6 +10,7 @@ del /Q MDK-ARM\*.scvd
 #del /Q MDK-ARM\JLink*
 del /Q MDK-ARM\JLinkLog.txt
 del /Q MDK-ARM\*.uvgui.*
+del /Q MDK-ARM\.vscode\*.log.*
 
 rd  /Q /S EmbeddedProject1\VisualGDB
 rd  /Q /S EmbeddedProject1\.vs

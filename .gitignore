@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+#VScode
+*log.lock
+
 #删除目标文件(用于打包备份)
 MDK-ARM/Objects
 MDK-ARM/Listings
